@@ -1,0 +1,45 @@
+<div class="container">
+    <h2>New Arrivals</h2>
+    <div class="row">
+        <div class="col-md-3">
+
+            <div class="product-top">
+
+                <img src="img/img.jpg"  alt="">
+                    <div class="overlay">
+                        <button type="button"  class="btn btn-secondary">
+                            <i class="fas fa-eye"></i>
+                                </button>
+                                <button type="button"  class="btn btn-secondary">
+                                    <i class="far fa-heart"></i>
+                                        </button>
+                                        <button type="button"  class="btn btn-secondary">
+                                            <i class="fas fa-shopping-cart"></i>
+                                                </button>
+                                                </div>                </div>
+                                                <div class="product-bottom text-center">
+
+                                                    <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star"></i>
+                                                            <i class="fas fa-star"></i>
+                                                                <i class="fas fa-star-half"></i>
+                                                                    <i class="far fa-star"></i>
+                                                                        <h3>Fitness Watch</h3>
+                                                                        <h5>$400.00</h5>                </div>            </div>
+                                                                        ///////css//////////////////////.container {    width: 100%;    margin-top: 10%;    font-family: sans-serif;    letter-spacing: 1px;} .container h2 {    background: #0062cc;    color: #ffff;    width: 200px;    font-size: 24px;    padding: 5px;    height: 40px;}
+                                                                        .container h2::after {    content: '';    border-top: 40px solid #0062cc;    border-right: 40px solid transparent;    position: relative;    left: 49px;    top: 35px;} .row {    margin-top: 30px;}
+                                                                        image {    width: 100%;} .product-bottom .fas {    color: #28a745;    font-size: 10px;} .product-bottom .far {    color: #28a745;    font-size: 10px;} .product-bottom h3 {    font-size: 20px;    font-weight: bold;}
+                                                                        .product-bottom h3 {    font-size: 20px;    padding-bottom: 10px;} .overlay {    display: block;    opacity: 0;    position: absolute;    top: 10%;    margin-left: 0;    width: 70px;}
+                                                                        .product-top:hover .overlay {    opacity: 1;    margin-left: 5%;    transition: 0.5s;} .overlay .fas {    cursor: pointer;    background-color: #555;    color: #000;    height: 35px;    width: 35px;    font-size: 20px;    padding: 7px;    margin: 5%;    margin-bottom: 5%;}
+                                                                        .overlay .far {    cursor: pointer;    background-color: #555;    color: #000;    height: 35px;    width: 35px;    font-size: 20px;    padding: 7px;    margin: 5%;    margin-bottom: 5%;}
+                                                                        .overlay .btn-secondary {    background: transparent !important;    border: none !important;    box-shadow: none !important;}
+
+                                                                        <!DOCTYPE html>
+                                                                        <html>
+
+                                                                        <body>
+                                                                            <form action="index.php" method="post" enctype="multipart/form-data"> <input type="file" name="fileToUpload" id="fileToUpload"> <input type="submit" value="Upload Image" name="submit"> </form>
+                                                                            <?php $target_dir = "uploads/"; // chỉ định thư mục nơi tệp sẽ được đặt echo $_FILES["fileToUpload"]["name"]; $target_file = $target_dir.basename($_FILES["fileToUpload"]["name"]); // chỉ định đường dẫn của tệp sẽ được tải lên $uploadOk = 1; $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION)); // giữ phần mở rộng tệp của tệp // Check if image file is a actual image or fake image if(isset($_POST["submit"])) { $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]); if($check !== false) { echo "File is an image - " . $check["mime"] . "."; $uploadOk = 1; } else { echo "File is not an image."; $uploadOk = 0; } } // Check if file already exists if (file_exists($target_file)) { echo "Sorry, file already exists."; $uploadOk = 0; } // Check file size if ($_FILES["fileToUpload"]["size"] > 500000) { echo "Sorry, your file is too large."; $uploadOk = 0; } // Allow certain file formats if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" && $imageFileType != "gif" ) { echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed."; $uploadOk = 0; } // Check if $uploadOk is set to 0 by an error if ($uploadOk == 0) { echo "Sorry, your file was not uploaded."; // if everything is ok, try to upload file } else { if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) { echo "The file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploaded."; } else { echo "Sorry, there was an error uploading your file."; } } ?>
+                                                                        </body>
+
+                                                                        </html>
